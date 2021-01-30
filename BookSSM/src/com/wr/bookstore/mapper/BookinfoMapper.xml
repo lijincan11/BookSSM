@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.wr.bookstore.mapper.BookinfoMapper">
+	<resultMap id="bookinfo_map" type="Bookinfo">
+		<id property="bookid" column="bookid" />
+		<result property="bookname" column="bookname" />
+		<result property="bookprice" column="bookprice" />
+		<result property="discountprice" column="discountprice" />
+		<result property="bookimg" column="bookimg" />
+		<result property="bookdetails" column="bookdetails" />
+		<result property="discount" column="discount" />
+		<result property="state" column="state" />
+		<result property="btype" column="btype" />
+		<result property="qixian" column="qixian" />
+		<result property="shihezhuanye" column="shihezhuanye" />
+		<result property="shihenianji" column="shihenianji" />
+		<result property="auth" column="auth" />
+		<result property="chubanshe" column="chubanshe" />
+		<result property="shijian" column="shijian" />
+		<result property="isbn" column="isbn" />
+		<result property="jifen" column="jifen" />
+		<result property="arname" column="arname" />
+		<result property="sendBookTime" column="sendBookTime" />
+		<result property="homeImage" column="homeImage" />
+		<result property="sent" column="sent" />
+</resultMap>
+
+	<!-- 查询新书上架 -->
+ 	<select id="findBook"  resultMap="bookinfo_map">
+ 		select * from bookinfo order by sendBookTime desc limit 0,7
+ 	</select>
+ 	
+ 	<!-- 根据id查书详情 -->
+ 	<select id="findBookByid" parameterType="Integer" resultType="Bookinfo">
+ 		select * from bookinfo where bookid =${bookid}
+ 	</select>
+
+	<!-- 热门推荐——小学 查询 -->
+	<select id="findBookxx" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%小学%' order by sent desc 
+	</select>
+	
+	<!-- 热门推荐——初中 查询 -->
+	<select id="findBookcz" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%初中%' order by sent desc 
+	</select>
+	
+	<!-- 热门推荐——高中 查询 -->
+	<select id="findBookgz" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%高中%' order by sent desc 
+	</select>
+	
+	<!-- 热门推荐——教育 查询 -->
+	<select id="findBookjy" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%教育%' order by sent desc 
+	</select>
+	
+	<!-- 热门推荐——工具书 查询 -->
+	<select id="findBookgjs" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%工具书%' order by sent desc 
+	</select>
+	
+	<!-- 热门推荐——期刊 查询 -->
+	<select id="findBookqk" resultMap="bookinfo_map">
+		select * from bookinfo where btype like '%期刊%' order by sent desc 
+	</select>
+	
+
+
+</mapper>

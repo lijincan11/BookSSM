@@ -1,0 +1,97 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- 添加功能 -->
+<mapper namespace="com.wr.bookstore.mapper.UserinfoMapper">
+ 	<insert id="add" parameterType="Userinfo">
+ 		INSERT into userinfo
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+		<if test="nickname!=null">nickname,</if>
+		<if test="pwd!=null">pwd,</if>
+		<if test="phone!=null">phone,</if>
+		<if test="qq!=null">qq,</if>
+		<if test="username!=null">username,</if>
+		<if test="address!=null">address,</if>
+		<if test="city!=null">city,</if>
+		<if test="qu!=null">qu,</if>
+		<if test="classname!=null">classname,</if>
+		<if test="grade!=null">grade,</if>
+		<if test="postcode!=null">postcode,</if>
+		<if test="province!=null">province,</if>
+		<if test="utype!=null">utype,</if>
+		<if test="xuexiao!=null">xuexiao,</if>
+		<if test="picture!=null">picture,</if>
+		<if test="email!=null">email,</if>
+		<if test="hobby!=null">hobby,</if>
+		<if test="introduce!=null">introduce,</if>
+		<if test="birthday!=null">birthday,</if>
+		<if test="gender!=null">gender</if>
+		
+		</trim>
+		values
+		<trim prefix="(" suffix=")" suffixOverrides=","> 
+		<if test="nickname!=null">#{nickname},</if>
+		<if test="pwd!=null">#{pwd},</if>
+		<if test="phone!=null">#{phone},</if>
+		<if test="qq!=null">#{qq},</if>
+		<if test="username!=null">#{username},</if>
+		<if test="address!=null">#{address},</if>
+		<if test="city!=null">#{city},</if>
+		<if test="qu!=null">#{qu},</if>
+		<if test="classname!=null">#{classname},</if>
+		<if test="grade!=null">#{grade},</if>
+		<if test="postcode!=null">#{postcode},</if>
+		<if test="province!=null">#{province},</if>
+		<if test="utype!=null">#{utype},</if>
+		<if test="xuexiao!=null">#{xuexiao},</if>
+		<if test="picture!=null">#{picture},</if>
+		<if test="email!=null">#{email},</if>
+		<if test="hobby!=null">#{hobby},</if>
+		<if test="introduce!=null">#{introduce},</if>
+		<if test="birthday!=null">#{birthday},</if>
+		<if test="gender!=null">#{gender}</if>
+		</trim>
+ 	</insert>
+ 	
+ 	<!-- 查询，登陆 -->
+ 	<select id="login" parameterType="Userinfo" resultType="Userinfo">
+		select * from userinfo where username=#{username} and pwd=#{pwd}
+	</select>
+	
+
+	
+	<update id="update" parameterType="Userinfo">
+		update userinfo 
+		<set>
+			<trim suffixOverrides=",">
+			
+		<if test="nickname!= null">nickname=#{nickname},</if>
+		<if test="pwd!= null">pwd=#{pwd},</if>
+		<if test="phone!=null">phone=#{phone},</if>
+		<if test="qq!=null">qq=#{qq},</if>
+		<if test="username!=null">username=#{username},</if>
+		<if test="address!=null">address=#{address},</if>
+		<if test="city!=null">city=#{city},</if>
+		<if test="qu!=null">qu=#{qu},</if>
+		<if test="classname!=null">classname=#{classname},</if>
+		<if test="grade!=null">grade=#{grade},</if>
+		<if test="postcode!=null">postcode=#{postcode},</if>
+		<if test="province!=null">province=#{province},</if>
+		<if test="utype!=null">utype=#{utype},</if>
+		<if test="xuexiao!=null">xuexiao=#{xuexiao},</if>
+		<if test="picture!=null">picture=#{picture},</if>
+		<if test="email!=null">email=#{email},</if>
+		<if test="hobby!=null">hobby=#{hobby},</if>
+		<if test="introduce!=null">introduce=#{introduce},</if>
+		<if test="birthday!=null">birthday=#{birthday},</if>
+		<if test="gender!=null">gender=#{gender}</if>
+			</trim>
+		</set>
+		where userid=${userid}
+	</update>
+	
+	<delete id="del" parameterType="Userinfo">
+		delete from userinfo where userid = #{userid}
+	</delete>
+</mapper>
